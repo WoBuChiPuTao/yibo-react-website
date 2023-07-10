@@ -1,9 +1,9 @@
-import { resolve } from "path";
-import { defineConfig, loadEnv } from "vite";
-import react from "@vitejs/plugin-react";
+import { resolve } from 'path';
+import { defineConfig, loadEnv } from 'vite';
+import react from '@vitejs/plugin-react';
 
 function resolvePath(dir: string) {
-  return resolve(process.cwd(), ".", dir);
+  return resolve(process.cwd(), '.', dir);
 }
 
 // https://vitejs.dev/config/
@@ -14,14 +14,26 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
         // 替换@为src
         {
           find: /@\//,
-          replacement: resolvePath("src/"),
+          replacement: resolvePath('src/'),
         },
         //  替换#为types
         {
           find: /#\//,
-          replacement: resolvePath("types/"),
+          replacement: resolvePath('types/'),
         },
       ],
+    },
+    server: {
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3000/api',
+          changeOrigin: true,
+          ws: true,
+          rewrite: (path) => path.replace(new RegExp(`^/api`), ''),
+          // only https
+          // secure: false
+        }
+      },
     },
     plugins: [react()],
     css: {
@@ -29,8 +41,8 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
       preprocessorOptions: {
         less: {
           // 一些配置项
-        }
-      }
-    }
+        },
+      },
+    },
   };
 });
