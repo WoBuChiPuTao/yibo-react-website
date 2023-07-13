@@ -14,12 +14,12 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
         // 替换@为src
         {
           find: /@\//,
-          replacement: resolvePath('src/'),
+          replacement: resolvePath('src') + '/',
         },
         //  替换#为types
         {
           find: /#\//,
-          replacement: resolvePath('types/'),
+          replacement: resolvePath('types') + '/',
         },
       ],
     },
@@ -32,7 +32,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
           rewrite: (path) => path.replace(new RegExp(`^/api`), ''),
           // only https
           // secure: false
-        }
+        },
       },
     },
     plugins: [react()],
