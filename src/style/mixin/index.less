@@ -1,19 +1,32 @@
 @import '../var/index.less';
 
-.useDevice(mobile,@content){
-    @media  screen and ( max-width: 767px){
+.useDevice(mobile, @content) {
+    @media screen and (max-width: 767px) {
         @content()
     }
 }
 
-.useDevice(pad,@content){
-    @media  screen and ( min-width: 768px) and ( max-width: 991px ){
+.useDevice(pad, @content) {
+    @media screen and (min-width: 768px) and (max-width: 991px) {
         @content()
     }
 }
 
-.useDevice(computer,@content){
-    @media  screen and ( min-width: 992px){
+.useDevice(noComputer, @content) {
+    @media screen and (max-width: 991px) {
+        @content()
+    }
+}
+
+
+.useDevice(computer, @content) {
+    @media screen and (min-width: 992px) {
+        @content()
+    }
+}
+
+.useDevice(maxDesktop, @content) {
+    @media screen and (min-width: 1280px) {
         @content()
     }
 }

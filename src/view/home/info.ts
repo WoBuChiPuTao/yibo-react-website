@@ -1,9 +1,10 @@
-import { FC } from 'react';
+
 
 
 export enum TabsEnum {
   HOME_PAGE = '',
   PRODUCT = 'product',
+  SUPPORT = 'support',
   SOLUTION = 'solution',
   NEWS = 'news',
   ABOUT = 'about',
@@ -21,6 +22,10 @@ export const tabs = [
   {
     path: `/?page=${TabsEnum.SOLUTION}`,
     label: '解决方案',
+  },
+  {
+    path: `/?page=${TabsEnum.SUPPORT}`,
+    label: '服务支持',
   },
   {
     path: `/?page=${TabsEnum.NEWS}`,

@@ -1,0 +1,71 @@
+@import '@/style/mixin/index.less';
+
+.home-card {
+  height: 560px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+
+  .useDevice(@noComputer,{
+    height: 420px;
+  });
+
+  a {
+    cursor: pointer;
+  }
+
+  .card-header {
+    overflow: hidden;
+    position: relative;
+    border-bottom: #ffffff solid 1px;
+
+    &::before {
+      content: '';
+      display: block;
+      padding-bottom: 66.66%;
+    }
+    img {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transition: ease all 0.3s;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .card-body {
+    padding: 24px;
+    height: 60%;
+
+    .useDevice(@noComputer,{
+      height: auto;
+    });
+
+    span {
+      display: inline-block;
+      font-size: 18px;
+      line-height: 1.4em;
+      margin: 12px 0;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.5em;
+      padding: 12px 0;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    transition: ease all 0.3s;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  }
+}

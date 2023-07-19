@@ -1,14 +1,14 @@
 import Header from '@/components/header/Header';
-import { Button } from 'antd';
 import { useEffect, useState } from 'react';
 import { tabs, TabsEnum } from './info';
 import { useQuery } from '@/hooks';
 import { useLocation } from 'react-router-dom';
 import AboutUs from './components/About';
-import HomPage from './components/Home';
+import HomPage from './homePage/Home';
 import News from './components/News';
 import Product from './components/Product';
 import Solution from './components/Solution';
+import ServiceSupport from './serviceSupport/ServiceSupport';
 
 const Home = () => {
   const queryMap = useQuery();
@@ -26,6 +26,8 @@ const Home = () => {
         return <News />;
       case TabsEnum.ABOUT:
         return <AboutUs />;
+      case TabsEnum.SUPPORT:
+        return <ServiceSupport />;
       default:
         return <HomPage />;
     }
@@ -38,10 +40,7 @@ const Home = () => {
 
   return (
     <div>
-      <Header items={tabs}></Header>
-      <div className="flex justify-center">
-        <Button type="primary">主页</Button>
-      </div>
+      <Header items={tabs} fillBack={page !== TabsEnum.HOME_PAGE}></Header>
       {getPage()}
     </div>
   );

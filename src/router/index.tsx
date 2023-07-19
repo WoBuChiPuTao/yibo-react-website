@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import { routes } from './routes';
 import { FunctionComponent, Suspense, useEffect } from 'react';
 import { RedirectProps, RouteInfo, SetupRouterProps } from './type';
+import Loading from '@/components/loading/Loading';
 
 const setupRouter: FunctionComponent<SetupRouterProps> = (props: SetupRouterProps) => {
   return (
@@ -20,7 +21,7 @@ function routerMap(routes: RouteInfo[] = []) {
           path={path}
           key={path}
           element={
-            <Suspense fallback={<span>Loading...</span>}>
+            <Suspense fallback={<Loading></Loading>}>
               <Comp></Comp>
             </Suspense>
           }
@@ -37,7 +38,7 @@ function routerMap(routes: RouteInfo[] = []) {
           key={path}
           path={path}
           element={
-            <Suspense fallback={<span>Loading...</span>}>
+            <Suspense fallback={<Loading></Loading>}>
               <Comp />
             </Suspense>
           }
